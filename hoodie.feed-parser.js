@@ -1,6 +1,6 @@
 Hoodie.extend(function(hoodie) {
-  hoodie.parseFeed = {
-    send: hoodie.task('feed').add,
+  hoodie.feeds = {
+    parse: hoodie.task('feed').add,
     on: hoodie.task('feed').on // maybe not needed
   };
 });
