@@ -1,0 +1,19 @@
+{
+  "name": "hoodie-plugin-feed-parser",
+  "version": "1.0.0",
+  "description": "Parses rss feeds",
+  "main": "worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schultyy/hoodie-plugin-feed-parser"
+  },
+  "author": "Jan Schulte",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schultyy/hoodie-plugin-feed-parser/issues"
+  },
+  "homepage": "https://github.com/schultyy/hoodie-plugin-feed-parser"
+}
