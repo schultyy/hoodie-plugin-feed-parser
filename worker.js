@@ -1,11 +1,16 @@
+var pp = require('podchoosee-parser');
+
 module.exports = function(hoodie, done) {
   hoodie.task.on('feed:add', handleNewFeed);
   database = null;
   function handleNewFeed(originDb, feed) {
     database = originDb;
-    hoodie.database(originDb).add('feed',
-        feed,
-        addFeedCallback);
+    pp.getSubscriptionPromise(feed)
+      .done(function(response) {
+        hoodie.database(originDb).add('feed',
+            response,
+            addFeedCallback);
+      });
   }
 
   function addFeedCallback(error, message) {

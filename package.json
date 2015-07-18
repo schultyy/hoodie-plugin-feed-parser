@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/schultyy/hoodie-plugin-feed-parser/issues"
   },
-  "homepage": "https://github.com/schultyy/hoodie-plugin-feed-parser"
+  "homepage": "https://github.com/schultyy/hoodie-plugin-feed-parser",
+  "dependencies": {
+    "podchoosee-parser": "^0.1.7"
+  }
 }
