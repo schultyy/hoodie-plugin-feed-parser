@@ -1,4 +1,5 @@
 var pp = require('podchoosee-parser');
+var uuid = require('uuid');
 
 function validateUrl(url) {
   var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -14,8 +15,17 @@ function validateUrl(url) {
   }
 }
 
+function createFeed(feedResponse, originAddress) {
+  console.log('title', feedResponse.subscription.title);
+  return {
+    id: uuid.v4(),
+    address: originAddress,
+    title: feedResponse.subscription.title
+  };
+}
+
 module.exports = function(hoodie, done) {
-  hoodie.task.on('feed:add', handleNewFeed);
+  hoodie.task.on('parse-feed:add', handleNewFeed);
   database = null;
   function handleNewFeed(originDb, message) {
     database = originDb;
@@ -26,9 +36,7 @@ module.exports = function(hoodie, done) {
       console.log("attemp to fetch", message.feed);
       pp.getSubscriptionPromise(message.feed)
         .done(function(response) {
-          hoodie.database(originDb).add('feed',
-              response,
-              addFeedCallback);
+          hoodie.database(database).add('feed', createFeed(response, message.feed), addFeedCallback);
         });
     }
     else {
@@ -37,6 +45,8 @@ module.exports = function(hoodie, done) {
   }
 
   function addFeedCallback(error, message) {
+    console.log('callback', database);
+    console.log('callback', message);
     if(error){
       return hoodie.task.error(database, message, error);
     }

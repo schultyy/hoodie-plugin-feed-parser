@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/schultyy/hoodie-plugin-feed-parser",
   "dependencies": {
-    "podchoosee-parser": "^0.1.7"
+    "podchoosee-parser": "^0.1.7",
+    "uuid": "^2.0.1"
   }
 }
