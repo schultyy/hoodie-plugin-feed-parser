@@ -1,5 +1,5 @@
 module.exports = function(hoodie, done) {
-  hoodie.task.on('parse-feed:add', handleNewFeed);
+  hoodie.task.on('feed:add', handleNewFeed);
   function handleNewFeed(originDb, feed) {
     hoodie.database(originDb).add('feed',
         address,
